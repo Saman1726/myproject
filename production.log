@@ -1,0 +1,122 @@
+2022-08-22 01:44:53.836  INFO 13257 --- [main] com.saman.SpringbootProjectApplication   : Starting SpringbootProjectApplication v0.0.1 using Java 18.0.2 on Samans-iMac.local with PID 13257 (/Users/saman/Documents/eclipse_workspace/springbootProject/target/springbootProject-0.0.1.jar started by saman in /Users/saman/Documents/eclipse_workspace/springbootProject)
+2022-08-22 01:44:53.840  INFO 13257 --- [main] com.saman.SpringbootProjectApplication   : The following 1 profile is active: "prod"
+2022-08-22 01:44:54.430  INFO 13257 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (http)
+2022-08-22 01:44:54.438  INFO 13257 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-22 01:44:54.438  INFO 13257 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-22 01:44:54.489  INFO 13257 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-22 01:44:54.489  INFO 13257 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 608 ms
+2022-08-22 01:44:54.734  INFO 13257 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (http) with context path ''
+2022-08-22 01:44:54.741  INFO 13257 --- [main] com.saman.SpringbootProjectApplication   : Started SpringbootProjectApplication in 1.37 seconds (JVM running for 1.636)
+2022-08-22 01:44:54.742  INFO 13257 --- [main] com.saman.SpringbootProjectApplication   : this is new new info!
+2022-08-22 01:44:54.742  WARN 13257 --- [main] com.saman.SpringbootProjectApplication   : this is new warn!
+2022-08-22 01:45:00.198  INFO 13257 --- [http-nio-443-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-22 01:45:00.198  INFO 13257 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-22 01:45:00.199  INFO 13257 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-22 01:45:00.290 ERROR 13257 --- [http-nio-443-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.web.client.HttpClientErrorException$NotFound: 404 : "{"timestamp":"2022-08-21T23:45:00.252+00:00","status":404,"error":"Not Found","path":"/products"}"] with root cause
+
+org.springframework.web.client.HttpClientErrorException$NotFound: 404 : "{"timestamp":"2022-08-21T23:45:00.252+00:00","status":404,"error":"Not Found","path":"/products"}"
+	at org.springframework.web.client.HttpClientErrorException.create(HttpClientErrorException.java:113) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:168) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.DefaultResponseErrorHandler.handleError(DefaultResponseErrorHandler.java:122) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.ResponseErrorHandler.handleError(ResponseErrorHandler.java:63) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.RestTemplate.handleResponse(RestTemplate.java:819) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:777) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:711) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:602) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at com.saman.controller.ProductRestTemplateController.getProductList(ProductRestTemplateController.java:31) ~[classes!/:0.0.1]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:577) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1070) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.22.jar!/:5.3.22]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at com.saman.SimpleFilter.doFilter(SimpleFilter.java:27) ~[classes!/:0.0.1]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.22.jar!/:5.3.22]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1789) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.65.jar!/:na]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-08-22 01:47:16.655  INFO 13335 --- [main] com.saman.SpringbootProjectApplication   : Starting SpringbootProjectApplication v0.0.1 using Java 18.0.2 on Samans-iMac.local with PID 13335 (/Users/saman/Documents/eclipse_workspace/springbootProject/target/springbootProject-0.0.1.jar started by saman in /Users/saman/Documents/eclipse_workspace/springbootProject)
+2022-08-22 01:47:16.658  INFO 13335 --- [main] com.saman.SpringbootProjectApplication   : The following 1 profile is active: "prod"
+2022-08-22 01:47:17.243  INFO 13335 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (http)
+2022-08-22 01:47:17.250  INFO 13335 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-22 01:47:17.250  INFO 13335 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-22 01:47:17.293  INFO 13335 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-22 01:47:17.294  INFO 13335 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 600 ms
+2022-08-22 01:47:17.543  INFO 13335 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (http) with context path ''
+2022-08-22 01:47:17.550  INFO 13335 --- [main] com.saman.SpringbootProjectApplication   : Started SpringbootProjectApplication in 1.194 seconds (JVM running for 1.465)
+2022-08-22 01:47:17.552  INFO 13335 --- [main] com.saman.SpringbootProjectApplication   : this is new new info!
+2022-08-22 01:47:17.552  WARN 13335 --- [main] com.saman.SpringbootProjectApplication   : this is new warn!
+2022-08-22 01:47:23.447  INFO 13335 --- [http-nio-443-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-22 01:47:23.447  INFO 13335 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-22 01:47:23.448  INFO 13335 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-08-22 23:17:19.657  INFO 33359 --- [main] com.saman.SpringbootProjectApplication   : Starting SpringbootProjectApplication v0.0.1 using Java 18.0.2 on Samans-iMac.local with PID 33359 (/Users/saman/Documents/eclipse_workspace/springbootProject/target/springbootProject-0.0.1.jar started by saman in /Users/saman/Documents/eclipse_workspace/springbootProject)
+2022-08-22 23:17:19.660  INFO 33359 --- [main] com.saman.SpringbootProjectApplication   : The following 1 profile is active: "prod"
+2022-08-22 23:17:20.351  INFO 33359 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (http)
+2022-08-22 23:17:20.360  INFO 33359 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-22 23:17:20.361  INFO 33359 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-22 23:17:20.415  INFO 33359 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-22 23:17:20.415  INFO 33359 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 715 ms
+2022-08-22 23:17:20.598  INFO 33359 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-22 23:17:20.719  INFO 33359 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (http) with context path ''
+2022-08-22 23:17:20.726  INFO 33359 --- [main] com.saman.SpringbootProjectApplication   : Started SpringbootProjectApplication in 1.616 seconds (JVM running for 2.056)
+2022-08-22 23:17:20.727  INFO 33359 --- [main] com.saman.SpringbootProjectApplication   : this is new new info!
+2022-08-22 23:17:20.727  WARN 33359 --- [main] com.saman.SpringbootProjectApplication   : this is new warn!
+2022-08-22 23:17:28.378  INFO 33359 --- [http-nio-443-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-22 23:17:28.379  INFO 33359 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-22 23:17:28.379  INFO 33359 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-08-22 23:20:00.254  INFO 33422 --- [main] com.saman.SpringbootProjectApplication   : Starting SpringbootProjectApplication v0.0.1 using Java 18.0.2 on Samans-iMac.local with PID 33422 (/Users/saman/Documents/eclipse_workspace/springbootProject/target/springbootProject-0.0.1.jar started by saman in /Users/saman/Documents/eclipse_workspace/springbootProject)
+2022-08-22 23:20:00.256  INFO 33422 --- [main] com.saman.SpringbootProjectApplication   : The following 1 profile is active: "prod"
+2022-08-22 23:20:00.893  INFO 33422 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 443 (http)
+2022-08-22 23:20:00.901  INFO 33422 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-08-22 23:20:00.902  INFO 33422 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-08-22 23:20:00.949  INFO 33422 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-08-22 23:20:00.949  INFO 33422 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 656 ms
+2022-08-22 23:20:01.120  INFO 33422 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-08-22 23:20:01.232  INFO 33422 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 443 (http) with context path ''
+2022-08-22 23:20:01.239  INFO 33422 --- [main] com.saman.SpringbootProjectApplication   : Started SpringbootProjectApplication in 1.3 seconds (JVM running for 1.607)
+2022-08-22 23:20:01.240  INFO 33422 --- [main] com.saman.SpringbootProjectApplication   : this is new new info!
+2022-08-22 23:20:01.240  WARN 33422 --- [main] com.saman.SpringbootProjectApplication   : this is new warn!
+2022-08-22 23:20:05.179  INFO 33422 --- [http-nio-443-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-08-22 23:20:05.179  INFO 33422 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-08-22 23:20:05.180  INFO 33422 --- [http-nio-443-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
