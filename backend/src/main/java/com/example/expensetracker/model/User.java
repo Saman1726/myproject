@@ -4,13 +4,19 @@ import jakarta.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "users") // Ensure the table name matches your database schema
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+    
+    @Column(nullable = false, unique = true)
     private String email;
+    
+    @Column(nullable = false)
     private String password;
+    
+    private String name;
     private String role;
 
     @OneToMany(mappedBy = "user")
