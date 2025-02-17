@@ -3,21 +3,18 @@ package com.example.expensetracker.security;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import javax.xml.bind.DatatypeConverter;
 import java.util.Date;
 
 @Component
 public class JwtTokenProvider {
 
-    @Value("${app.jwtSecret:secretkey}")
-    private String jwtSecret;
-
-    @Value("${app.jwtExpirationInMs:86400000}")
-    private int jwtExpirationInMs;    
+    private final String jwtSecret = "TokenProviderKey"; // Replace with your secret key
+    private final int jwtExpirationInMs = 604800000; // 7 days
 
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -26,15 +23,15 @@ public class JwtTokenProvider {
 
         return Jwts.builder()
                 .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date())
+                .setIssuedAt(now)
                 .setExpiration(expiryDate)
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS512, DatatypeConverter.parseBase64Binary(jwtSecret))
                 .compact();
     }
 
     public String getUserIdFromJWT(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(DatatypeConverter.parseBase64Binary(jwtSecret))
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -43,19 +40,11 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String authToken) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
+            Jwts.parser().setSigningKey(DatatypeConverter.parseBase64Binary(jwtSecret)).parseClaimsJws(authToken);
             return true;
-        } catch (io.jsonwebtoken.ExpiredJwtException e) {
-            // Handle expired token
-            System.out.println("JWT token is expired: " + e.getMessage());
-        } catch (io.jsonwebtoken.SignatureException e) {
-            // Handle invalid signature
-            System.out.println("Invalid JWT signature: " + e.getMessage());
-        } catch (Exception e) {
-            // Handle other errors
-            System.out.println("Invalid JWT token: " + e.getMessage());
+        } catch (Exception ex) {
+            // Log the exception or handle it as needed
         }
         return false;
     }
-    
 }

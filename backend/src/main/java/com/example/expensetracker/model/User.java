@@ -1,6 +1,7 @@
 package com.example.expensetracker.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,8 +20,8 @@ public class User {
     private String name;
     private String role;
 
-    @OneToMany(mappedBy = "user")
-    private Set<Transaction> transactions;
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Transaction> transactions;
 
     @OneToMany(mappedBy = "user")
     private Set<Category> categories;
@@ -66,11 +67,11 @@ public class User {
         this.role = role;
     }
 
-    public Set<Transaction> getTransactions() {
+    public List<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(Set<Transaction> transactions) {
+    public void setTransactions(List<Transaction> transactions) {
         this.transactions = transactions;
     }
 

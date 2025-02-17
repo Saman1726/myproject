@@ -1,3 +1,4 @@
+// filepath: /backend/src/main/java/com/example/expensetracker/controller/AuthController.java
 package com.example.expensetracker.controller;
 
 import com.example.expensetracker.model.User;

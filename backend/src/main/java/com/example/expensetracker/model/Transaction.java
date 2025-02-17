@@ -1,24 +1,24 @@
 package com.example.expensetracker.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Double amount;
-    private LocalDate date;
     private String description;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private Double amount;
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     // Getters and setters
     public Long getId() {
@@ -29,6 +29,14 @@ public class Transaction {
         this.id = id;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public Double getAmount() {
         return amount;
     }
@@ -37,20 +45,20 @@ public class Transaction {
         this.amount = amount;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public User getUser() {
@@ -61,11 +69,8 @@ public class Transaction {
         this.user = user;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
+    // Method to get the category ID
+    public Long getCategoryId() {
+        return category != null ? category.getId() : null;
     }
 }
