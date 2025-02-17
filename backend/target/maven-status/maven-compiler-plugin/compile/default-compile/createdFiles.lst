@@ -2,11 +2,11 @@ com\example\expensetracker\controller\AuthController.class
 com\example\expensetracker\ExpenseTrackerApplication.class
 com\example\expensetracker\security\CustomUserDetailsService.class
 com\example\expensetracker\security\JwtAuthenticationFilter.class
+com\example\expensetracker\model\User.class
+com\example\expensetracker\model\Transaction.class
+com\example\expensetracker\repository\UserRepository.class
 com\example\expensetracker\config\SecurityConfig.class
 com\example\expensetracker\model\Category.class
-com\example\expensetracker\model\User.class
 com\example\expensetracker\repository\TransactionRepository.class
 com\example\expensetracker\security\JwtTokenProvider.class
-com\example\expensetracker\model\Transaction.class
 com\example\expensetracker\repository\CategoryRepository.class
-com\example\expensetracker\repository\UserRepository.class

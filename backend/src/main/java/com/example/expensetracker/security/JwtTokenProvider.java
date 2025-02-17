@@ -13,11 +13,11 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    @Value("${app.jwtSecret}")
+    @Value("${app.jwtSecret:secretkey}")
     private String jwtSecret;
 
-    @Value("${app.jwtExpirationInMs}")
-    private int jwtExpirationInMs;
+    @Value("${app.jwtExpirationInMs:86400000}")
+    private int jwtExpirationInMs;    
 
     public String generateToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -45,9 +45,17 @@ public class JwtTokenProvider {
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
+        } catch (io.jsonwebtoken.ExpiredJwtException e) {
+            // Handle expired token
+            System.out.println("JWT token is expired: " + e.getMessage());
+        } catch (io.jsonwebtoken.SignatureException e) {
+            // Handle invalid signature
+            System.out.println("Invalid JWT signature: " + e.getMessage());
         } catch (Exception e) {
-            // log error
+            // Handle other errors
+            System.out.println("Invalid JWT token: " + e.getMessage());
         }
         return false;
     }
+    
 }
