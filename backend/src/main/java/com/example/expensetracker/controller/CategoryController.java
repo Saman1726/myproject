@@ -2,6 +2,7 @@ package com.example.expensetracker.controller;
 
 import com.example.expensetracker.model.Category;
 import com.example.expensetracker.repository.CategoryRepository;
+import com.example.expensetracker.repository.UserRepository;
 import com.example.expensetracker.security.UserUtils;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,9 @@ public class CategoryController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
@@ -29,10 +33,22 @@ public class CategoryController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/name/{name}")
+    public ResponseEntity<Category> getCategoryByName(@PathVariable String name) {
+        return categoryRepository.findByName(name)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @PostMapping
     public Category createCategory(@RequestBody Category category) {
-        UserUtils.getLoggedInUserId();
-        return categoryRepository.save(category);
+        try {
+            category.setUser(userRepository.findByEmail(UserUtils.getLoggedInUser().getUsername()));
+            return categoryRepository.save(category);
+        } catch (Exception e) {
+            // System.out.println(e);
+        }
+        return null;
     }
 
     @PutMapping("/{id}")

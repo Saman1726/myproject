@@ -28,6 +28,12 @@ export const getCategories = (token) => {
   });
 };
 
+export const getCategorieByName = (token,name) => {
+  return axios.get(`${API_URL}/categories/name/${name}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+};
+
 export const addCategory = (category, token) => {
   return axios.post(`${API_URL}/categories`, category, {
     headers: { Authorization: `Bearer ${token}` },

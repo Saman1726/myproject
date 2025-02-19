@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getTransactions, addTransaction } from '../../api';
+import { getTransactions, addTransaction, getCategorieByName} from '../../api';
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
@@ -21,7 +21,8 @@ const Transactions = () => {
   const handleAddTransaction = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
-    const newTransaction = { amount, category, date, description };
+    const categoryID = await getCategorieByName(token,category);
+    const newTransaction = { amount, categoryID, date, description };
     await addTransaction(newTransaction, token);
     setTransactions([...transactions, newTransaction]);
   };

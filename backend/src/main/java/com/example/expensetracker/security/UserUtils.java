@@ -12,13 +12,5 @@ public class UserUtils {
         }
         return null; // User not authenticated
     }
-
-    public static long getLoggedInUserId() {
-        User user = getLoggedInUser();
-        if (user != null) {
-            return Long.parseLong(user.getUsername());
-        }
-        return -1; // User not authenticated
-    }
 }
 
