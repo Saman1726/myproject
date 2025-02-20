@@ -4,6 +4,8 @@ import com.example.expensetracker.model.Category;
 import com.example.expensetracker.model.Transaction;
 import com.example.expensetracker.repository.CategoryRepository;
 import com.example.expensetracker.repository.TransactionRepository;
+import com.example.expensetracker.repository.UserRepository;
+import com.example.expensetracker.util.UserUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,20 +23,23 @@ public class TransactionController {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         // Ensure the category is set correctly
-        if (transaction.getCategoryId() != null) {
-            Optional<Category> category = categoryRepository.findById(transaction.getCategoryId());
-            category.ifPresent(transaction::setCategory);
+        if (transaction.getCategory() != null) {
+            transaction.setUser(userRepository.findByEmail(UserUtils.getLoggedInUserEmail())); 
+            Transaction savedTransaction = transactionRepository.save(transaction);
+            return ResponseEntity.ok(savedTransaction);
         }
-        Transaction savedTransaction = transactionRepository.save(transaction);
-        return ResponseEntity.ok(savedTransaction);
+       return ResponseEntity.badRequest().build();
     }
 
     @GetMapping
     public ResponseEntity<List<Transaction>> getAllTransactions() {
-        List<Transaction> transactions = transactionRepository.findAll();
+        List<Transaction> transactions = transactionRepository.findByUser(userRepository.findByEmail(UserUtils.getLoggedInUserEmail()));
         return ResponseEntity.ok(transactions);
     }
 

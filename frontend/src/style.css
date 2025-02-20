@@ -49,3 +49,15 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+
+.transaction-list {
+  list-style-type: none;
+  padding: 0;
+  text-align: center;
+  margin: 20px auto;
+  width: 50%;
+  background-color: #fff; /* Optional: Add background for better visibility */
+  padding: 10px;
+  border-radius: 8px;
+}
+

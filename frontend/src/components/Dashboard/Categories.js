@@ -37,7 +37,7 @@ const Categories = () => {
         </div>
         <button type="submit">Add Category</button>
       </form>
-      <ul>
+      <ul className="transaction-list">
         {categories.map((category) => (
           <li key={category.id}>{category.name}</li>
         ))}

@@ -16,15 +16,20 @@ export const getTransactions = (token) => {
   });
 };
 
-export const addTransaction = (transaction, token) => {
-  
-  const categoryRes =  getCategorieByName(token,transaction.category);
-  transaction.category = categoryRes;
+export const addTransaction = async (transaction, token) => {
+  try {
+    const categoryRes = await getCategorieByName(token, transaction.category);
+    transaction.category = categoryRes.data;
 
-  return axios.post(`${API_URL}/transactions`, transaction, {
-    headers: { Authorization: `Bearer ${token}` },
-  });
+    return await axios.post(`${API_URL}/transactions`, transaction, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+  } catch (error) {
+    console.error("Error adding transaction:", error);
+    throw error;
+  }
 };
+
 
 export const getCategories = (token) => {
   return axios.get(`${API_URL}/categories`, {

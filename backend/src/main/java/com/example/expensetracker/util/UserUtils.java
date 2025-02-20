@@ -1,4 +1,4 @@
-package com.example.expensetracker.security;
+package com.example.expensetracker.util;
 
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -11,6 +11,14 @@ public class UserUtils {
             return (User) authentication.getPrincipal();
         }
         return null; // User not authenticated
+    }
+
+    public static String getLoggedInUserEmail() {
+        User user = getLoggedInUser();
+        if (user != null) {
+            return user.getUsername();
+        }
+        return null;
     }
 }
 

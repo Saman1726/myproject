@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { getTransactions, addTransaction} from '../../api';
+import React, { useEffect, useState } from "react";
+import { getTransactions, addTransaction } from "../../api";
 
 const Transactions = () => {
   const [transactions, setTransactions] = useState([]);
-  const [amount, setAmount] = useState('');
-  const [category, setCategory] = useState('');
-  const [date, setDate] = useState('');
-  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState("");
+  const [category, setCategory] = useState("");
+  const [date, setDate] = useState("");
+  const [description, setDescription] = useState("");
 
   useEffect(() => {
     const fetchTransactions = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       const response = await getTransactions(token);
+
+      console.log("Fetched Transactions:", response.data); // Debugging log
       setTransactions(response.data);
     };
 
@@ -20,11 +22,14 @@ const Transactions = () => {
 
   const handleAddTransaction = async (e) => {
     e.preventDefault();
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("token");
 
-    const newTransaction = { amount, category, date, description};
+    const newTransaction = { amount, category, date, description };
     await addTransaction(newTransaction, token);
-    setTransactions([...transactions, newTransaction]);
+
+    // Fetch updated transactions from API
+    const response = await getTransactions(token);
+    setTransactions(response.data);
   };
 
   return (
@@ -65,13 +70,11 @@ const Transactions = () => {
         </div>
         <button type="submit">Add Transaction</button>
       </form>
-    
-      
-    
-      <ul className="form-group">
-        {transactions.map((transaction) => (
-          <li key={transaction.id}>
-            {transaction.amount} - {transaction.category} - {transaction.date} - {transaction.description}
+      <ul className="transaction-list">
+        {transactions.map((transaction, index) => (
+          <li key={transaction.id || index}>
+            {transaction.amount} - {transaction.category.name} - {transaction.date} -{" "}
+            {transaction.description}
           </li>
         ))}
       </ul>

@@ -1,8 +1,6 @@
 package com.example.expensetracker.model;
 
 import jakarta.persistence.*;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "users") // Ensure the table name matches your database schema
@@ -19,12 +17,6 @@ public class User {
     
     private String name;
     private String role;
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Transaction> transactions;
-
-    @OneToMany(mappedBy = "user")
-    private Set<Category> categories;
 
     // Getters and setters
     public Long getId() {
@@ -67,19 +59,4 @@ public class User {
         this.role = role;
     }
 
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public void setTransactions(List<Transaction> transactions) {
-        this.transactions = transactions;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
 }

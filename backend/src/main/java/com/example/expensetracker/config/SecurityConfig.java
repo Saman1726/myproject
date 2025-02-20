@@ -85,8 +85,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**", "/error","/api/categories/**","/api/transactions/**").permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
-                        .accessDeniedHandler(new CustomAccessDeniedHandler())
-                        .authenticationEntryPoint(new CustomAuthenticationEntryPoint()))
+                        .accessDeniedHandler(customAccessDeniedHandler)
+                        .authenticationEntryPoint(customAuthenticationEntryPoint))
                 .addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
