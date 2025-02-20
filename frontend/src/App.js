@@ -4,6 +4,7 @@ import Login from './components/Auth/Login';
 import Register from './components/Auth/Register';
 import Dashboard from './components/Dashboard/Dashboard';
 import PrivateRoute from './PrivateRoute';
+import './style.css';
 
 const App = () => {
   return (

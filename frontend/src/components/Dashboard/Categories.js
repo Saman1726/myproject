@@ -26,8 +26,8 @@ const Categories = () => {
   return (
     <div>
       <h3>Categories</h3>
-      <form onSubmit={handleAddCategory}>
-        <div>
+      <form onSubmit={handleAddCategory} className="form-container">
+        <div className="form-group">
           <label>Name:</label>
           <input
             type="text"

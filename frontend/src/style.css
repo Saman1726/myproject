@@ -1,0 +1,51 @@
+/* styles.css */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    align-self: center;
+    text-align: center;
+  }
+
+  input {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    text-align: left;
+    align-items: right;
+  }
+
+ /* Form container */
+.form-container {
+  width: 100px;         /* Set the width of the form */
+  height: auto;         /* Height can be auto to adjust based on content */
+  margin: 0 auto;       /* Center the form horizontally */
+  padding: 20px;        /* Add padding inside the form */
+  border: 1px solid #ccc; /* Add border to the form container */
+  border-radius: 8px;   /* Optional: rounded corners */
+  background-color: #f9f9f9; /* Background color */
+}
+
+/* Optional: You can also set max-width to make it responsive */
+.form-container {
+  max-width: 50%; /* Ensures form doesn't exceed the screen width on small screens */
+  width: 50%; /* Ensures it uses full width if screen is large enough */
+}
+
+/* Styling form elements */
+.form-group {
+  margin-bottom: 16px;  /* Space between form fields */
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 80%;  /* Make input take up the full width of the form */
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

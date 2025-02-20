@@ -24,8 +24,8 @@ public class TransactionController {
     @PostMapping
     public ResponseEntity<Transaction> createTransaction(@RequestBody Transaction transaction) {
         // Ensure the category is set correctly
-        if (transaction.getCategory() != null) {
-            Optional<Category> category = categoryRepository.findById(transaction.getCategory().getId());
+        if (transaction.getCategoryId() != null) {
+            Optional<Category> category = categoryRepository.findById(transaction.getCategoryId());
             category.ifPresent(transaction::setCategory);
         }
         Transaction savedTransaction = transactionRepository.save(transaction);

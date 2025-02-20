@@ -21,8 +21,8 @@ const Register = () => {
   return (
     <div>
       <h2>Register</h2>
-      <form onSubmit={handleRegister}>
-        <div>
+      <form onSubmit={handleRegister} className="form-container">
+        <div className="form-group">
           <label>Name:</label>
           <input
             type="text"
@@ -30,7 +30,7 @@ const Register = () => {
             onChange={(e) => setName(e.target.value)}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
@@ -38,7 +38,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div>
+        <div className="form-group">
           <label>Password:</label>
           <input
             type="password"

@@ -35,9 +35,8 @@ public class CategoryController {
 
     @GetMapping("/name/{name}")
     public ResponseEntity<Category> getCategoryByName(@PathVariable String name) {
-        return categoryRepository.findByName(name)
-                .map(ResponseEntity::ok)
-                .orElse(ResponseEntity.notFound().build());
+        Category category = categoryRepository.findByName(name).orElse(null);
+        return category != null ? ResponseEntity.ok(category) : ResponseEntity.notFound().build();
     }
 
     @PostMapping

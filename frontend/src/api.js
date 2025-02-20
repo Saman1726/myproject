@@ -17,6 +17,10 @@ export const getTransactions = (token) => {
 };
 
 export const addTransaction = (transaction, token) => {
+  
+  const categoryRes =  getCategorieByName(token,transaction.category);
+  transaction.category = categoryRes;
+
   return axios.post(`${API_URL}/transactions`, transaction, {
     headers: { Authorization: `Bearer ${token}` },
   });

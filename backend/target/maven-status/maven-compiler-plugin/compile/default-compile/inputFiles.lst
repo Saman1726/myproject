@@ -1,6 +1,6 @@
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\controller\TransactionController.java
-C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\config\WebConfig.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\model\Transaction.java
+C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\security\CustomAccessDeniedHandler.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\repository\UserRepository.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\ExpenseTrackerApplication.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\security\CustomUserDetailsService.java
@@ -14,3 +14,4 @@ C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracke
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\model\Category.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\config\SecurityConfig.java
 C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\model\User.java
+C:\Users\saman.anvari\projectGit\backend\src\main\java\com\example\expensetracker\security\CustomAuthenticationEntryPoint.java
