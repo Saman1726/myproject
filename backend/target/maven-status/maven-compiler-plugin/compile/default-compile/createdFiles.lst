@@ -8,8 +8,8 @@ com\example\expensetracker\model\User.class
 com\example\expensetracker\model\Transaction.class
 com\example\expensetracker\repository\UserRepository.class
 com\example\expensetracker\controller\CategoryController.class
-com\example\expensetracker\security\UserUtils.class
 com\example\expensetracker\config\SecurityConfig.class
+com\example\expensetracker\util\UserUtils.class
 com\example\expensetracker\model\Category.class
 com\example\expensetracker\security\CustomAccessDeniedHandler.class
 com\example\expensetracker\repository\TransactionRepository.class
