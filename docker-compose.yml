@@ -5,6 +5,7 @@ services:
     container_name: expense-backend
     ports:
       - "8080:8080"
+      - "5005:5005" # Debug port for Spring Boot
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/expensetracker
       - SPRING_DATASOURCE_USERNAME=postgres
