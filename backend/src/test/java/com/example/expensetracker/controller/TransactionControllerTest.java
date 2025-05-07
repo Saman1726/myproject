@@ -57,7 +57,7 @@ public class TransactionControllerTest {
 
         ResponseEntity<Transaction> response = transactionController.createTransaction(transaction);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
         assertEquals(transaction.getAmount(), response.getBody().getAmount());
         verify(transactionRepository, times(1)).save(transaction);
     }
@@ -70,7 +70,7 @@ public class TransactionControllerTest {
 
         ResponseEntity<Void> response = transactionController.deleteTransaction(transactionId);
 
-        assertEquals(204, response.getStatusCodeValue());
+        assertEquals(204, response.getStatusCode().value());
         verify(transactionRepository, times(1)).deleteById(transactionId);
     }
 
@@ -90,7 +90,7 @@ public class TransactionControllerTest {
 
         ResponseEntity<List<Transaction>> response = transactionController.getAllTransactions();
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
         assertEquals(2, response.getBody().size());
         verify(transactionRepository, times(1)).findByUser(userRepository.findByEmail(UserUtils.getLoggedInUserEmail()));
     }
@@ -107,7 +107,7 @@ public class TransactionControllerTest {
 
         ResponseEntity<Transaction> response = transactionController.getTransactionById(transactionId);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
         assertEquals(transaction.getId(), response.getBody().getId());
         verify(transactionRepository, times(1)).findById(transactionId);
     }
@@ -129,7 +129,7 @@ public class TransactionControllerTest {
 
         ResponseEntity<Transaction> response = transactionController.updateTransaction(transactionId, updatedTransaction);
 
-        assertEquals(200, response.getStatusCodeValue());
+        assertEquals(200, response.getStatusCode().value());
         assertEquals(updatedTransaction.getAmount(), response.getBody().getAmount());
         assertEquals(updatedTransaction.getDescription(), response.getBody().getDescription());
         verify(transactionRepository, times(1)).save(existingTransaction);
